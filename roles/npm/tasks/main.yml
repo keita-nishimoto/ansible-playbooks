@@ -1,0 +1,51 @@
+- name: Check npm Version.
+  become: no
+  shell: bash -lc "npm --version | grep {{ npm_version }}"
+  register: npm_is_updated
+  changed_when: no
+  failed_when: no
+
+- name: npm Update.
+  become: no
+  shell: bash -lc "npm install -g npm"
+  when: npm_is_updated.stdout == ''
+  failed_when: no
+
+- name: Check yarn Is Installed.
+  become: no
+  shell: bash -lc "yarn --version | grep {{ yarn_version }}"
+  register: yarn_is_installed
+  changed_when: no
+  failed_when: no
+
+- name: Install yarn
+  become: no
+  shell: bash -lc "npm install -g yarn"
+  when: yarn_is_installed.stdout == ''
+  failed_when: no
+
+- name: Check serverless Is Installed.
+  become: no
+  shell: bash -lc "serverless Commands | grep {{ serverless_version }}"
+  register: serverless_is_installed
+  changed_when: no
+  failed_when: no
+
+- name: Install serverless
+  become: no
+  shell: bash -lc "npm install -g serverless"
+  when: serverless_is_installed.stdout == ''
+  failed_when: no
+
+- name: Check vue-cli Is Installed.
+  become: no
+  shell: bash -lc "vue --version | grep {{ vue_cli_version }}"
+  register: vue_cli_is_installed
+  changed_when: no
+  failed_when: no
+
+- name: Install vue-cli
+  become: no
+  shell: bash -lc "npm install -g vue-cli"
+  when: vue_cli_is_installed.stdout == ''
+  failed_when: no
