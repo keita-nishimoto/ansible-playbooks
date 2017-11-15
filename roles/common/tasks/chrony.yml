@@ -1,0 +1,11 @@
+- name: remove ntp
+  yum: name=ntp state=absent
+
+- name: Install chrony.
+  yum: name=chrony
+
+- name: Replace chrony.conf.
+  template: src=chrony.conf.j2 dest=/etc/chrony.conf owner=root group=root mode=0644
+
+- name: Restart chrony.
+  service: name=chrony state=restarted enabled=yes

@@ -1,0 +1,8 @@
+- name: add epel
+  yum : name=epel-release
+
+- name: change repositories option
+  replace : dest=/etc/yum.repos.d/epel.repo regexp="enabled *= *1" replace="enabled=0"
+
+- name: add remi
+  yum : name=http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
