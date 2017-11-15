@@ -1,0 +1,7 @@
+- hosts: all-servers
+  become: yes
+  roles:
+    - common
+    - nodebrew
+    - node
+    - npm
