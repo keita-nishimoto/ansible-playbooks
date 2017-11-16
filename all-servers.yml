@@ -1,7 +1,13 @@
 - hosts: all-servers
   become: yes
+  vars_files:
+    - hosts/{{ stage }}/group_vars/vault.yml
   roles:
     - common
     - nodebrew
     - node
     - npm
+    - mysql/yum-repository
+    - mysql/client
+    - mysql/server
+    - mysql/init

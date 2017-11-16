@@ -1,0 +1,4 @@
+- name: Install MySQL5.7 Client
+  yum : name={{ item }} enablerepo=mysql57-community state=latest
+  with_items:
+    - mysql-community-client
