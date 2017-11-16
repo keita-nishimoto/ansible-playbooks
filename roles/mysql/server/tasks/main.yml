@@ -1,0 +1,14 @@
+- name: Install MySQL5.7
+  yum : name={{ item }} enablerepo=mysql57-community state=latest
+  with_items:
+    - mysql-community-client
+    - mysql-community-common
+    - mysql-community-devel
+    - mysql-community-libs
+    - mysql-community-server
+
+- name: Replace my.cnf
+  template: src=my.cnf.j2 dest=/etc/my.cnf owner=root group=root mode=0644
+
+- name: Add mysqld to StartUps on boot And Be Running
+  service: enabled=yes name=mysqld state=started
