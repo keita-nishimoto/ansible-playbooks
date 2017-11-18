@@ -10,6 +10,7 @@ laravel_api_sample:
   ssl_certificate_key_path: /etc/pki/tls/private/domainname.key
   domain_name: dev.laravel-api.net
   document_root: /home/vagrant/laravel-api-sample/public
+  db_host: localhost
   db_name: laravel_api
   db_user: laravel_api
   test_db_name: laravel_api_test
