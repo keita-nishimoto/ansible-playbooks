@@ -2,6 +2,7 @@
   become: yes
   vars_files:
     - hosts/{{ stage }}/group_vars/vault.yml
+    - hosts/{{ stage }}/group_vars/laravel-api-sample.yml
   roles:
     - common
     - nodebrew
@@ -16,3 +17,4 @@
     - nginx
     - php/php-fpm
     - tls
+    - app/laravel-api-sample
