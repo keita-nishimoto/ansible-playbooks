@@ -12,3 +12,4 @@
     - mysql/server
     - mysql/init
     - php/base
+    - php/composer
