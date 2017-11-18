@@ -1,0 +1,17 @@
+- name: replace .env
+  become: no
+  template:
+    src: .env.j2
+    dest: "{{ laravel_api_sample.env_path }}"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0644
+
+- name: replace .env.testing
+  become: no
+  template:
+    src: .env.testing.j2
+    dest: "{{ laravel_api_sample.env_path }}.testing"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 0644
