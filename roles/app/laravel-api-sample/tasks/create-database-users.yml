@@ -1,0 +1,13 @@
+- name: create {{ laravel_api_sample.db_user }}
+  mysql_user: name={{ laravel_api_sample.db_user }} login_password={{ mysql_root_password }} host={{ item }} password={{ laravel_api_sample_db_password }} priv={{ laravel_api_sample.db_name }}.*:ALL state=present
+  with_items:
+    - 127.0.0.1
+    - localhost
+    - 192.168.%
+
+- name: create {{ laravel_api_sample.test_db_user }}
+  mysql_user: name={{ laravel_api_sample.test_db_user }} login_password={{ mysql_root_password }} host={{ item }} password={{ laravel_api_sample_db_password }} priv={{ laravel_api_sample.test_db_name }}.*:ALL state=present
+  with_items:
+    - 127.0.0.1
+    - localhost
+    - 192.168.%
