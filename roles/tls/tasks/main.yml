@@ -1,0 +1,5 @@
+- name: Set TLS crt
+  template: src=domainname.crt.j2 dest=/etc/pki/tls/certs/domainname.crt owner=root group=root mode=0644
+
+- name: Set TLS privateKey
+  template: src=domainname.key.j2 dest=/etc/pki/tls/private/domainname.key owner=root group=root mode=0644
