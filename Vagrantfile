@@ -11,6 +11,12 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--memory", "2048", "--cpus", "2", "--ioapic", "on", "--cableconnected1", "on"]
   end
 
+  %w(
+    laravel-api-sample
+  ).each do |dir|
+    config.vm.synced_folder "../#{dir}", "/home/vagrant/#{dir}", mount_options: ["dmode=777","fmode=777"] if  File.exist?("../#{dir}")
+  end
+
   config.vm.provision "ansible" do |ansible|
     ansible.limit = "all"
     ansible.inventory_path = "hosts/local"
