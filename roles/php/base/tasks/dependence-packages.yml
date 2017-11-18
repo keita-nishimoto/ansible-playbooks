@@ -1,0 +1,13 @@
+- name: Install dependence-packages
+  yum : name={{item}} state=present
+  with_items:
+    - httpd
+    - libmcrypt
+    - libtool-ltdl
+    - zlib-devel
+    - autoconf
+    - automake
+    - libevent
+    - libevent-devel
+    - libmemcached
+    - libmemcached-devel

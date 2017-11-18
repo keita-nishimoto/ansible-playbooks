@@ -1,0 +1,2 @@
+- name: replace php.ini
+  template: src=php.ini.j2 dest=/etc/php.ini owner=root group=root mode=0644

@@ -11,3 +11,4 @@
     - mysql/client
     - mysql/server
     - mysql/init
+    - php/base

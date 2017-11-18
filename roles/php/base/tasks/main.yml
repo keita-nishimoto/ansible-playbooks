@@ -1,0 +1,4 @@
+- import_tasks: dependence-packages.yml
+- import_tasks: php-packages.yml
+- import_tasks: pecl-memcached.yml
+- import_tasks: replace-setting-files.yml

@@ -1,0 +1,30 @@
+- name: php-memcached Is Installed.
+  shell: php -i | grep 'memcached'
+  register: php_memcached_is_installed
+  changed_when: no
+  failed_when: no
+
+- name: git clone php-memcached
+  git:
+    repo: https://github.com/php-memcached-dev/php-memcached
+    version: php7
+    depth: 1
+    dest: /usr/local/src/php-memcached
+    accept_hostkey: yes
+    force: yes
+  when: php_memcached_is_installed.stdout == ''
+
+# /usr/lib64/php/modules/memcached.so が作成される
+- name: Make Extension
+  shell: >
+    phpize;
+    ./configure;
+    make;
+    make install;
+  args:
+    chdir: /usr/local/src/php-memcached
+  when: php_memcached_is_installed.stdout == ''
+
+- name: Setting memcached.ini
+  template: src=50-memcached.ini.j2 dest=/etc/php.d/50-memcached.ini owner=root group=root mode=0644
+  when: php_memcached_is_installed.stdout == ''
