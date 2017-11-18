@@ -13,3 +13,6 @@
     - mysql/init
     - php/base
     - php/composer
+    - nginx
+    - php/php-fpm
+    - tls
