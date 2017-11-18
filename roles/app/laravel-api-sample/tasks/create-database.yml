@@ -1,0 +1,11 @@
+- name: create database {{ laravel_api_sample.db_name }}
+  mysql_db:
+    name: "{{ laravel_api_sample.db_name }}"
+    login_password: "{{ mysql_root_password }}"
+    state: present
+
+- name: create database {{ laravel_api_sample.test_db_name }}
+  mysql_db:
+    name: "{{ laravel_api_sample.test_db_name }}"
+    login_password: "{{ mysql_root_password }}"
+    state: present

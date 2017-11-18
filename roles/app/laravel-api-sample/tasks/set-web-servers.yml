@@ -1,0 +1,25 @@
+- name: Set {{ laravel_api_sample.domain_name }} VirtualHost conf(local)
+  template:
+    src: laravel-api-sample.conf.j2
+    dest: /etc/nginx/conf.d/laravel-api-sample.conf
+    owner: root
+    group: root
+    mode: 0600
+
+# コードカバレッジ閲覧用のディレクトリを作成する
+- name: Make laravel-api-sample codeCoverage directory
+  file: path=/usr/share/nginx/coverage/laravel-api-sample state=directory owner=root group=root mode=0777
+
+- name: Set {{ coverage_laravel_api_sample.domain_name }} VirtualHost conf
+  template:
+    src: coverage-laravel-api-sample.conf.j2
+    dest: /etc/nginx/conf.d/coverage-laravel-api-sample.conf
+    owner: root
+    group: root
+    mode: 0600
+
+- name : Restart nginx
+  service: name=nginx state=restarted enabled=yes
+
+- name : Restart php-fpm
+  service: name=php-fpm state=restarted enabled=yes

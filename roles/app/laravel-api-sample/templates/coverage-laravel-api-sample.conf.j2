@@ -1,0 +1,27 @@
+server {
+    listen 80;
+    server_name {{ coverage_laravel_api_sample.domain_name }};
+
+    root {{ coverage_laravel_api_sample.document_root }};
+    index index.html index.htm index.php;
+
+    access_log /var/log/nginx/{{ coverage_laravel_api_sample.domain_name }}_access.log;
+    error_log /var/log/nginx/{{ coverage_laravel_api_sample.domain_name }}_error.log;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        try_files $uri = 404;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+
+        fastcgi_index index.php;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATHINFO $fastcgi_path_info;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+    }
+}
