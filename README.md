@@ -25,6 +25,7 @@ xRbRzCYbWTZ4xbZS
 
 - hosts/local/group_vars/vault.yml
     - mysql_root_password
+    - laravel_api_sample_db_password
 
 プロジェクトルートで `ansible-vault view hosts/local/group_vars/vault.yml` を実行してみて下さい。
 
