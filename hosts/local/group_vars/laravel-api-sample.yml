@@ -1,0 +1,20 @@
+laravel_api_sample:
+  app_env: local
+  app_key: base64:JGTKoAh+vjAXSSsPCvD2M9mcZfEaCrdrAGhav3sNPMs=
+  app_debug: true
+  app_log_level: debug
+  app_log: daily
+  app_url: https://dev.laravel-api.net
+  env_path: /home/vagrant/laravel-api-sample/.env
+  ssl_certificate_path: /etc/pki/tls/certs/domainname.crt
+  ssl_certificate_key_path: /etc/pki/tls/private/domainname.key
+  domain_name: dev.laravel-api.net
+  document_root: /home/vagrant/laravel-api-sample/public
+  db_name: laravel_api
+  db_user: laravel_api
+  test_db_name: laravel_api_test
+  test_db_user: laravel_api_test
+
+coverage_laravel_api_sample:
+  domain_name: coverage.laravel-api.net
+  document_root: /usr/share/nginx/coverage/laravel-api-sample
