@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
 
   %w(
     laravel-api-sample
+    ojt-php
   ).each do |dir|
     config.vm.synced_folder "../#{dir}", "/home/vagrant/#{dir}", mount_options: ["dmode=777","fmode=777"] if  File.exist?("../#{dir}")
   end
