@@ -1,15 +1,13 @@
-- name: Install php7.1
-  yum : name={{item}} enablerepo=remi-php71 disablerepo=amzn-main state=present
+- name: Install php7.2
+  yum : name={{item}} enablerepo=remi-php72 disablerepo=amzn-main state=present
   with_items:
     - php
     - php-devel
     - php-opcache
     - php-mbstring
-    - php-pecl-redis
-    - php-mcrypt
     - php-pdo
     - php-mysqlnd
     - php-pecl-xdebug
     - php-fpm
     - php-xml
-    - php-pecl-apcu
+    - php-pecl-redis
