@@ -3,6 +3,7 @@
   with_items:
     - httpd
     - libmcrypt
+    - libtool
     - libtool-ltdl
     - zlib-devel
     - autoconf
@@ -11,3 +12,4 @@
     - libevent-devel
     - libmemcached
     - libmemcached-devel
+    - gcc-c++
