@@ -17,4 +17,5 @@
     - nginx
     - php/php-fpm
     - tls
+    - jdk
     - app/laravel-api-sample
