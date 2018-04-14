@@ -1,8 +1,5 @@
 - hosts: serverless-vpc-integration-ec2
   become: yes
-  vars_files:
-    - hosts/{{ stage }}/group_vars/vault.yml
-    - hosts/{{ stage }}/group_vars/serverless-vpc-integration-ec2.yml
   roles:
     - common
     - nodebrew
