@@ -1,4 +1,4 @@
 serverless_vpc_integration:
   repository_name: serverless-vpc-integration
   git_repository: https://github.com/keitakn/serverless-vpc-integration.git
-  git_branch: feature/issue1
+  git_branch: master
