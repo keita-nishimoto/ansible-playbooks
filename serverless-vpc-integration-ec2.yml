@@ -1,9 +1,12 @@
 - hosts: serverless-vpc-integration-ec2
   become: yes
+  vars_files:
+    - hosts/{{ stage }}/group_vars/serverless-vpc-integration.yml
   roles:
     - common
     - nodebrew
     - node
     - npm
     - nginx
+    - app/common
     - app/serverless-vpc-integration-ec2
