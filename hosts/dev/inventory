@@ -1,5 +1,6 @@
 [serverless-vpc-integration-ec2]
 serverless-vpc-integration-1a
+serverless-vpc-integration-1c
 
 [all:vars]
 stage=dev
