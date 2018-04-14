@@ -1,0 +1,11 @@
+app_user: ec2-user
+node_version: v9.8.0
+nodebrew_install_dir: /home/{{ app_user }}/
+npm_version: 5.7.1
+yarn_version: 1.5.1
+serverless_version: 1.26.1
+vue_cli_version: 2.9.1
+
+# php.ini
+zend_assertions: 1
+assert_exception: 1
