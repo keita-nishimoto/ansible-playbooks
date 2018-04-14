@@ -1,0 +1,33 @@
+- name: git clone serverless-vpc-integration
+  become: no
+  git:
+    repo: "{{ serverless_vpc_integration.git_repository }}"
+    version: "{{ serverless_vpc_integration.git_branch }}"
+    dest: "{{ webapp_dir }}{{ serverless_vpc_integration.repository_name }}"
+    accept_hostkey: yes
+    force: yes
+
+- name: yarn install
+  become: no
+  shell: bash -lc "yarn install"
+  args:
+    chdir: "{{ webapp_dir }}{{ serverless_vpc_integration.repository_name }}"
+
+- name: Start Application.
+  become: no
+  shell: bash -lc "yarn run server:start"
+  args:
+    chdir: "{{ webapp_dir }}{{ serverless_vpc_integration.repository_name }}"
+  ignore_errors: yes
+
+- name: Restart Application.
+  become: no
+  shell: bash -lc "yarn run server:restart"
+  args:
+    chdir: "{{ webapp_dir }}{{ serverless_vpc_integration.repository_name }}"
+
+- name: Virtual Host Setting
+  template: src=serverless-vpc-integration.conf.j2 dest=/etc/nginx/conf.d/serverless-vpc-integration.conf owner=root group=root mode=0600
+
+- name : start nginx
+  service: name=nginx state=restarted enabled=yes
