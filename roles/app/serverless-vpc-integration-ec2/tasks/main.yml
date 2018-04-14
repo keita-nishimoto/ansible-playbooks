@@ -1,0 +1,8 @@
+- name: git clone serverless-vpc-integration
+  become: no
+  git:
+    repo: https://github.com/keitakn/serverless-vpc-integration.git
+    version: master
+    dest: /opt/serverless-vpc-integration
+    accept_hostkey: yes
+    force: yes
